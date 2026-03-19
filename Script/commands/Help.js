@@ -6,7 +6,7 @@ module.exports.config = {
     name: "help",
     version: "2.0.0",
     hasPermssion: 0,
-    credits: "SHAHADAT SAHU",
+    credits: "NOBITA CHAT BOT",
     description: "Shows all commands with details",
     commandCategory: "system",
     usages: "[command name/page number]",
@@ -22,41 +22,46 @@ module.exports.languages = {
         "moduleInfo": `╭━━━━━━━━━━━━━━━━╮
 ┃ ✨ 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐈𝐍𝐅𝐎 ✨
 ┣━━━━━━━━━━━┫
-┃ 🔖 Name: %1
-┃ 📄 Usage: %2
-┃ 📜 Description: %3
-┃ 🔑 Permission: %4
-┃ 👨‍💻 Credit: %5
-┃ 📂 Category: %6
-┃ ⏳ Cooldown: %7s
+┃ 🔖 𝐍𝐀𝐌𝐄 : %1
+┃ 📄 𝐔𝐒𝐀𝐆𝐄 : %2
+┃ 📜 𝐃𝐄𝐒𝐂𝐑𝐈𝐏𝐓𝐈𝐎𝐍 : %3
+┃ 🔑 𝐏𝐄𝐑𝐌𝐈𝐒𝐒𝐈𝐎𝐍 : %4
+┃ 👨‍💻 𝐂𝐑𝐄𝐃𝐈𝐓 : %5
+┃ 📂 𝐂𝐀𝐓𝐄𝐆𝐎𝐑𝐘 : %6
+┃ ⏳ 𝐂𝐎𝐎𝐋𝐃𝐎𝐖𝐍 : %7s
 ┣━━━━━━━━━━━━━━━━┫
-┃ ⚙ Prefix: %8
-┃ 🤖 Bot Name: %9
-┃ 👑 Owner: 𝐒𝐇𝐀𝐇𝐀𝐃𝐀𝐓 𝐒𝐀𝐇𝐔
+┃ ⚙  𝐏𝐑𝐄𝐅𝐈𝐗 : %8
+┃ 🤖 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 : %9
+┃ 👑 𝐀𝐃𝐌𝐈𝐍 : 𝐒𝐀𝐋𝐌𝐀𝐍 💛
 ╰━━━━━━━━━━━━━━━━╯`,
-        "helpList": "[ There are %1 commands. Use: \"%2help commandName\" to view more. ]",
-        "user": "User",
-        "adminGroup": "Admin Group",
-        "adminBot": "Admin Bot"
+        "𝐇𝐞𝐥𝐩 𝐋𝐢𝐬𝐭": "[ 𝐓𝐡𝐞𝐫𝐞 𝐀𝐫𝐞 %1 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬. 𝐔𝐬𝐞 : \"%2𝐇𝐞𝐥𝐩 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐍𝐚𝐦𝐞\" 𝐓𝐨 𝐕𝐢𝐞𝐰 𝐌𝐨𝐫𝐞. ]",
+        "𝐔𝐒𝐄𝐑": "𝐔𝐒𝐄𝐑",
+        "𝐀𝐝𝐦𝐢𝐧𝐆𝐫𝐨𝐮𝐩": "𝐀𝐝𝐦𝐢𝐧 𝐆𝐫𝐨𝐮𝐩",
+        "𝐀𝐝𝐦𝐢𝐧𝐛𝐨𝐭": "𝐀𝐝𝐦𝐢𝐧 𝐁𝐨𝐭"
     }
 };
 
-// 🔹 এখানে আপনার ফটো Imgur লিংক করে বসাবেন ✅
+// এখানে আপনার ফোটো Imgur লিংক করে বসাবেন✅
+
 const helpImages = [
-    "https://i.imgur.com/sxSn1K3.jpeg",
-    "https://i.imgur.com/8WvpgUL.jpeg",
-    "https://i.imgur.com/8WvpgUL.jpeg",
-    "https://i.imgur.com/sxSn1K3.jpeg"
+    "https://imgur.com/a/pmnLDji",
+    "https://imgur.com/a/P2P4pBj",
+    "https://imgur.com/a/3F2xeMo",
+    "https://imgur.com/a/UNdknyT"
 ];
 
-
 function downloadImages(callback) {
-    const randomUrl = helpImages[Math.floor(Math.random() * helpImages.length)];
-    const filePath = path.join(__dirname, "cache", "help_random.jpg");
+    let files = [];
+    let completed = 0;
 
-    request(randomUrl)
-        .pipe(fs.createWriteStream(filePath))
-        .on("close", () => callback([filePath]));
+    helpImages.forEach((url, i) => {  
+        let filePath = path.join(__dirname, "cache", `help${i}.jpg`);  
+        files.push(filePath);  
+        request(url).pipe(fs.createWriteStream(filePath)).on("close", () => {  
+            completed++;  
+            if (completed === helpImages.length) callback(files);  
+        });  
+    });
 }
 
 module.exports.handleEvent = function ({ api, event, getText }) {
@@ -80,7 +85,7 @@ module.exports.handleEvent = function ({ api, event, getText }) {
         command.config.commandCategory || "Unknown",  
         command.config.cooldowns || 0,  
         prefix,  
-        global.config.BOTNAME || "𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭"  
+        global.config.BOTNAME || "𝐍𝐎𝐁𝐈𝐓𝐀 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓"  
     );  
 
     downloadImages(files => {  
@@ -110,7 +115,7 @@ module.exports.run = function ({ api, event, args, getText }) {
             command.config.commandCategory || "Unknown",  
             command.config.cooldowns || 0,  
             prefix,  
-            global.config.BOTNAME || "𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭"  
+            global.config.BOTNAME || "𝐍𝐎𝐁𝐈𝐓𝐀 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓"  
         );  
 
         downloadImages(files => {  
@@ -137,14 +142,14 @@ module.exports.run = function ({ api, event, args, getText }) {
     const text = `╭━━━━━━━━━━━━━━━━╮
 ┃ 📜 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐋𝐈𝐒𝐓 📜
 ┣━━━━━━━━━━━━━━━┫
-┃ 📄 Page: ${page}/${totalPages}
-┃ 🧮 Total: ${arrayInfo.length}
+┃ 📄 𝐏𝐀𝐆𝐄 : ${page}/${totalPages}
+┃ 🧮 𝐓𝐎𝐓𝐀𝐋 : ${arrayInfo.length}
 ┣━━━━━━━━━━━━━━━━┫
 ${msg}
 ┣━━━━━━━━━━━━━━━━┫
-┃ ⚙ Prefix: ${prefix}
-┃ 🤖 Bot Name: ${global.config.BOTNAME || "𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭"}
-┃ 👑 Owner: 𝐒𝐇𝐀𝐇𝐀𝐃𝐀𝐓 𝐒𝐀𝐇𝐔
+┃ ⚙  𝐏𝐑𝐄𝐅𝐈𝐗 : ${prefix}
+┃ 🤖 𝐁𝐎𝐓 𝐍𝐀𝐌𝐄 : ${global.config.BOTNAME || "𝐍𝐎𝐁𝐈𝐓𝐀 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓"}
+┃ 👑 𝐀𝐃𝐌𝐈𝐍 : 𝐒𝐀𝐋𝐌𝐀𝐍 💛
 ╰━━━━━━━━━━━━━━━━╯`;
 
     downloadImages(files => {  
