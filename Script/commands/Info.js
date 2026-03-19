@@ -1,8 +1,8 @@
 module.exports.config = {
  name: "info",
- version: "1.0.0",
+ version: "1.2.6",
  hasPermssion: 0,
- credits: "SHAHADAT SAHU",
+ credits: "NOBITA CHAT BOT",
  description: "Bot information command",
  commandCategory: "For users",
  hide: true,
@@ -32,43 +32,42 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
  const totalUsers = global.data.allUserID.length;
  const totalThreads = global.data.allThreadID.length;
 
- const msg = `╭⭓ ⪩ 𝐁𝐎𝐓𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 ⪨
+ const msg = `╭⭓ ⪩ 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 ⪨
 │
-├─ 🤖 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ─꯭─⃝‌‌𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭
-├─ ☢️ 𝗣𝗿𝗲𝗳𝗶𝘅 : ${config.PREFIX}
-├─ ♻️ 𝗣𝗿𝗲𝗳𝗶𝘅 𝗕𝗼𝘅 : ${prefix}
-├─ 🔶 𝗠𝗼𝗱𝘂𝗹𝗲𝘀 : ${commands.size}
-├─ 🔰 𝗣𝗶𝗻𝗴 : ${Date.now() - event.timestamp}ms
+├─ 🤖 𝗕𝗢𝗧 𝗡𝗔𝗠𝗘 : ─꯭─⃝‌‌𝐍𝐎𝐁𝐈𝐓𝐀 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓
+├─ ☢️ 𝗣𝗥𝗘𝗙𝗜𝗫 : ${config.PREFIX}
+├─ ♻️ 𝗣𝗥𝗘𝗙𝗜𝗫 𝗕𝗢𝗫 : ${prefix}
+├─ 🔶 𝗠𝗢𝗗𝗨𝗟𝗘𝗦 : ${commands.size}
+├─ 🔰 𝗣𝗜𝗡𝗚 : ${Date.now() - event.timestamp}ms
 │
 ╰───────⭓
 
 ╭⭓ ⪩ 𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢 ⪨
 │
-├─ 👑 𝗡𝗮𝗺𝗲 : 𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐈𝐬𝐥𝐚𝐦
-├─ 📲 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸 :
-│ facebook.com/61575698041722
-├─ 💌 𝗠𝗲𝘀𝘀𝗲𝗻𝗴𝗲𝗿 :
-│ m.me/61575698041722
-├─ 📞 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽 :
-│ wa.me/+8801882333052
+├─ 👑 𝗡𝗔𝗠𝗘 : 𝐒𝐀𝐋𝐌𝐀𝐍 𝐀𝐇𝐌𝐄𝐃
+├─ 📲 𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 :
+│ ✔︎ facebook.com/DEATH.USER1
+├─ 💌 𝗠𝗘𝗦𝗦𝗘𝗡𝗚𝗘𝗥 :
+│ ✔︎ https://m.me/DEATH.USER1
+├─ 📞 𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣 :
+│ ✔︎ wa.me/+8801941010189
 │
 ╰───────⭓
 
 ╭⭓ ⪩ 𝗔𝗖𝗧𝗜𝗩𝗜𝗧𝗜𝗘𝗦 ⪨
 │
-├─ ⏳ 𝗔𝗰𝘁𝗶𝘃𝗲 𝗧𝗶𝗺𝗲 : ${hours}h ${minutes}m ${seconds}s
-├─ 📣 𝗚𝗿𝗼𝘂𝗽𝘀 : ${totalThreads}
-├─ 🧿 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿𝘀 : ${totalUsers}
+├─ ⏳ 𝗔𝗖𝗧𝗜𝗩𝗘 𝗧𝗜𝗠𝗘 : ${hours}h ${minutes}m ${seconds}s
+├─ 📣 𝗚𝗥𝗢𝗨𝗣𝗦 : ${totalThreads}
+├─ 🧿 𝗧𝗢𝗧𝗔𝗟 𝗨𝗦𝗘𝗥𝗦 : ${totalUsers}
 ╰───────⭓
 
-❤️ 𝗧𝗵𝗮𝗻𝗸𝘀 𝗳𝗼𝗿 𝘂𝘀𝗶𝗻𝗴 🌺
- 😍─꯭─⃝‌‌𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭😘`;
+     ❤️ 𝗧𝗛𝗔𝗡𝗞𝗦 𝗙𝗢𝗥 𝗨𝗦𝗜𝗡𝗚 𝗠𝗬 𝗕𝗢𝗧 🌺`;
 
  const imgLinks = [
- "https://i.imgur.com/zqsuJnX.jpeg",
- "https://i.imgur.com/sxSn1K3.jpeg",
- "https://i.imgur.com/wu0iDqS.jpeg",
- "https://i.imgur.com/Huz3nAE.png"
+ "https://imgur.com/a/YVUjWxK",
+ "https://imgur.com/a/3fDST5S",
+ "https://imgur.com/a/qBLmHLP",
+ "https://imgur.com/a/UIVoAya"
  ];
 
  const imgLink = imgLinks[Math.floor(Math.random() * imgLinks.length)];
